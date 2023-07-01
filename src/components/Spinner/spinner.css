@@ -1,0 +1,12 @@
+.spinner-box {
+  height: 70vh;
+}
+
+.spinner-text {
+  font-size: 2.4rem;
+}
+
+.spinner {
+  height: 5rem;
+  width: 5rem;
+}

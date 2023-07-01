@@ -1,0 +1,37 @@
+.about-heading {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+.about-heading-container {
+  margin-top: 0;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.about-grid img {
+  max-width: 100%;
+  height: auto;
+}
+.about-grid-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+h2 {
+  margin-top: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+@media (max-width: 37.5em) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,111 @@
+.cart-heading {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #555555;
+  letter-spacing: -1px;
+}
+
+table {
+  border: 0.5px solid black;
+}
+
+thead {
+  background-color: #dc3545;
+  color: white;
+}
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-heading {
+  font-size: 1.3rem;
+}
+
+.th-name {
+  width: 20%;
+}
+
+.td-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #777;
+}
+
+.td-description {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.td-price {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #777;
+}
+
+.no-items-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Cart */
+.order-summary-table {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.order-summary-heading {
+  width: 100%;
+  font-size: 1.4rem;
+  padding: 1rem 1rem;
+  text-align: left;
+}
+
+.order-label {
+  text-align: left;
+  padding: 0.5rem 1rem;
+  color: #738698;
+  font-size: 1.2rem;
+}
+
+.order-value {
+  font-size: 1.5rem;
+  color: #777;
+  font-weight: 700;
+}
+
+tr:last-child {
+  border-top: 1px solid black;
+}
+
+.payment-option {
+  /* min-width: 50%; */
+  /* max-width: 50%; */
+  padding: 5rem;
+  margin: 0 auto;
+}
+
+.bottom-row {
+  padding: 5rem 0;
+}
+
+.payment-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.login-to-pay {
+  font-size: 2rem;
+  font-weight: 600;
+}

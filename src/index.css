@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+  font-size: 62.5%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', 'Poppins', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +16,84 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: -0.1rem;
+  padding: 3rem 0;
+}
+
+h4 {
+  margin: 2rem 0 1rem 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #555;
+}
+
+h5 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.center-with-margin {
+  margin: 0 auto;
+}
+
+.custom-container {
+  padding: 0 10rem;
+}
+
+/* 1160px */
+@media (max-width: 72.5em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .custom-container {
+    padding: 0 5rem;
+  }
+}
+
+/* 900px */
+@media (max-width: 56.25em) {
+  html {
+    font-size: 50%;
+  }
+
+  .custom-container {
+    padding: 0 2rem;
+  }
+}
+
+/* 600px */
+@media (max-width: 37.5em) {
+  html {
+    font-size: 43.75%;
+  }
+}
+
+/* 414px - IPHONE XR */
+@media (max-width: 25.87em) {
+  html {
+    font-size: 43.75%;
+  }
 }

@@ -1,0 +1,19 @@
+.select {
+  width: 15rem;
+}
+
+.t-data {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 37.5em) {
+  .select {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 25em) {
+  .select {
+    width: 8rem;
+  }
+}

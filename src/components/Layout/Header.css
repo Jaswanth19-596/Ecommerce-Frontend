@@ -1,0 +1,112 @@
+.navbar {
+  padding: 2rem;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.navbar-nav a {
+  font-size: 1.4rem;
+}
+
+.ecommerce-logo {
+  display: inline-block;
+  font-size: 2rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  padding: 2rem;
+}
+
+.header-nav {
+  background-color: #4d4d4d;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  /* height: 10rem; */
+}
+
+.navbar-brand {
+  color: white !important;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-link {
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Search bar */
+.search-container {
+  margin: auto auto;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.search {
+  width: 30rem;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: auto;
+}
+
+.search::placeholder {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.search-button {
+  padding: 1rem 2rem;
+  border: 1px solid white;
+  background-color: #4d4d4d;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.search-button:hover {
+  background-color: #252525;
+  color: white;
+  border: none;
+}
+
+/* 710px */
+@media (max-width: 44.37em) {
+  .navbar-nav {
+    margin: 0 auto;
+  }
+}
+
+/* 600px */
+@media (max-width: 37.5em) {
+}
+
+/* 414px - IPHONE XR */
+@media (max-width: 25.87em) {
+  .ecommerce-logo {
+    font-size: 1.5rem;
+    padding-right: 0;
+    color: red;
+  }
+
+  .search-container {
+    width: 40%;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .navbar {
+    padding: 2rem 0;
+  }
+
+  .navbar-nav {
+  }
+}

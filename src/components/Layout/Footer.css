@@ -1,0 +1,43 @@
+.footer-links-container {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.footer-links-container a:link,
+.footer-links-container a:visited {
+  text-decoration: underline;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+
+.footer-links-container a:hover,
+.footer-links-container a:active {
+  transform: scale(1.1) translateY(-2px);
+}
+
+.footer {
+  padding: 3rem;
+  background-color: #4d4d4d;
+  text-align: center;
+  color: white;
+}
+
+.footer-description {
+  margin-top: 2rem;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
+}
+
+@media (max-width: 26em) {
+  .footer-links-container {
+    gap: 2rem;
+  }
+
+  .footer {
+    padding: 3rem 0;
+  }
+}

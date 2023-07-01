@@ -1,0 +1,8 @@
+.category-container {
+  /* width: 100rem; */
+  height: 100%;
+}
+
+.entire-container {
+  min-height: 80vh;
+}
