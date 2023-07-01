@@ -8,7 +8,8 @@ import authContext from '../../store/auth-context';
 import cartContext from '../../store/cart-context';
 import Layout from '../../components/Layout/Layout';
 
-axios.defaults.baseURL = 'http://localhost:8080/api/v1';
+axios.defaults.baseURL =
+  'https://ecommerce-backend-jaswanth.onrender.com/api/v1';
 // axios.defaults.headers.common['Authorization'] =
 
 const initialState = {

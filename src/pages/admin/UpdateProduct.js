@@ -236,7 +236,7 @@ const UpdateProduct = () => {
             <img
               src={
                 imageForRendering ||
-                `http://localhost:8080/api/v1/products/get-image/${params.id}`
+                `https://ecommerce-backend-jaswanth.onrender.com/api/v1/products/get-image/${params.id}`
               }
               alt="product"
               width={300}

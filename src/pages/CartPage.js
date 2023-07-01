@@ -126,7 +126,7 @@ const Cart = () => {
               <tr>
                 <td>
                   <img
-                    src={`http://localhost:8080/api/v1/products/get-image/${item._id}`}
+                    src={`https://ecommerce-backend-jaswanth.onrender.com/api/v1/products/get-image/${item._id}`}
                     alt=""
                     style={{ width: '100px', height: '80px' }}
                   />
