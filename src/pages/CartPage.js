@@ -8,7 +8,6 @@ import DropIn from 'braintree-web-drop-in-react'; // For payment
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import './CartPage.css';
-import NoProductAvailable from './../components/NoProductAvailabe/NoProductAvailable';
 
 const Cart = () => {
   const [cartState, setCartState] = useContext(cartContext);
