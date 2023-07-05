@@ -83,7 +83,7 @@ const Profile = () => {
 
   return (
     <div>
-      <h3>Update Profile</h3>
+      <h1 className="text-center">Update Profile</h1>
 
       <form action="" className="form" onSubmit={handleProfileUpdate}>
         <div className="input-group">
@@ -183,7 +183,7 @@ const Profile = () => {
         </div>
 
         <div className="input-group">
-          <button className="btn btn-primary submit-button" type="submit">
+          <button className="button" type="submit">
             Update
           </button>
         </div>

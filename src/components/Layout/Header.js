@@ -18,8 +18,6 @@ const Header = () => {
   // Store the cart Items of the user in db
   const storeCartItems = async () => {
     try {
-      console.log('this is the cart state');
-      console.log(cartState);
       const { data } = await axios.put(
         '/auth/update-cart',
         {
@@ -30,8 +28,6 @@ const Header = () => {
           headers: { Authorization: authState.token },
         }
       );
-
-      console.log(data);
     } catch (error) {
       console.log('Error while storing cart items in db');
     }
@@ -60,34 +56,16 @@ const Header = () => {
   return (
     <header className="header-nav">
       <NavLink className="ecommerce-logo " to="/">
-        Ecommerce App
+        Ecartify
       </NavLink>
 
       <div className="search-container">
         <SearchInput />
       </div>
 
-      {/* <nav className="navbar navbar-expand-lg ">
-        <div className="container-fluid">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon" />
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            
-          </div>
-        </div>
-      </nav> */}
       <ul className="navbar-nav ">
         <li className="nav-item">
-          <NavLink className="nav-link active" aria-current="page" to="/home">
+          <NavLink className="nav-link" aria-current="page" to="/home">
             Home
           </NavLink>
         </li>

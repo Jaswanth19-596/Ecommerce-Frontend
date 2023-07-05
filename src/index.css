@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
+/* Primary color : #366880 */
+/* Tints and shades */
+
+/* Secondary color : #c9977f */
+/* Tints and shades */
+
+:root {
+  --primary-color: #366880;
+  --secondary-color: #c9977f;
+  --gray-color: #888;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -30,9 +42,13 @@ html {
 h1 {
   font-size: 5rem;
   font-weight: 700;
-  color: #555;
+  color: #b58872;
   letter-spacing: -0.1rem;
   padding: 3rem 0;
+}
+
+h3 {
+  color: var(--secondary-color);
 }
 
 h4 {
@@ -60,6 +76,64 @@ h5 {
 
 .custom-container {
   padding: 0 10rem;
+}
+
+.button {
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button:hover {
+  color: var(--secondary-color);
+  background-color: white;
+  border: 1px solid var(--secondary-color);
+}
+
+.admin-dashboard-sub-heading {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--secondary-color);
+}
+
+.input,
+textarea {
+  width: 100%;
+  border: 2px solid gray !important;
+  border-radius: 1rem !important;
+  padding: 1rem;
+  color: var(--gray-color);
+}
+
+.label {
+  color: #666;
+  font-size: 1.2rem;
+}
+
+main {
+  position: relative;
+}
+.error-text {
+  font-size: 1rem;
+  color: rgb(255, 92, 119);
+  font-weight: 600;
+}
+
+.error-icon {
+  font-size: 1.5rem;
+  margin: 0.2rem;
+}
+
+/* Changing bootstrap colors */
+.list-group-item.active {
+  background-color: var(--primary-color) !important;
 }
 
 /* 1160px */
@@ -95,5 +169,9 @@ h5 {
 @media (max-width: 25.87em) {
   html {
     font-size: 43.75%;
+  }
+
+  h1 {
+    font-size: 3.5rem;
   }
 }

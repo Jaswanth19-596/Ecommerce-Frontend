@@ -1,20 +1,63 @@
 .contact-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-content: center;
-  height: 80vh;
-  align-items: center;
+  grid-template-columns: 1fr;
+  /* align-content: center; */
+  /* height: 80vh; */
+  /* align-items: center; */
+}
+
+.contact-upper-container {
+  margin-bottom: 7rem;
+}
+
+.contact-sub-heading {
+  text-align: center;
+  font-size: 3rem;
+  color: var(--gray-color);
+  margin-bottom: 5rem;
+}
+
+.contact-items-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.contact-item-icon {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.upper-text {
+  font-size: 1.4rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.lower-text {
+  font-size: 1.2rem;
+  color: #777;
+}
+
+.contact-item {
+  text-align: center;
 }
 
 .contact-form {
-  border: 2px solid black;
-  width: 50%;
-  justify-self: center;
+  margin: 0 auto;
   padding: 3rem;
-  border: 0.5px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.1);
+  box-shadow: 0.1rem 2rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 5rem;
 }
 
+.contact-form-heading {
+  font-size: 3rem;
+}
+
+.contact-form-description {
+  color: #888;
+  text-align: center;
+}
 .input-group {
   margin-bottom: 2rem;
   text-align: center;
@@ -26,10 +69,10 @@
   height: 3rem;
 }
 
-.label {
+/* .label {
   display: block;
   font-size: 1.2rem;
-}
+} */
 
 .textarea {
   display: block;
@@ -63,10 +106,6 @@
 .address ul li {
   padding: 2rem 0;
   font-size: 1.5rem;
-}
-
-.error-text {
-  color: red;
 }
 
 @media (max-width: 37.5em) {

@@ -16,6 +16,8 @@ export const SearchContextProvider = (props) => {
 
   const getProductsOnSearch = async () => {
     try {
+      if (searchState.keyword.length === 0) return;
+
       const { data } = await axios.get(
         `/products/get-products/search/${searchState.keyword}`
       );

@@ -8,7 +8,7 @@
 .footer-links-container a:link,
 .footer-links-container a:visited {
   text-decoration: underline;
-  color: white;
+  color: var(--secondary-color);
   font-size: 1.2rem;
   font-weight: 600;
   transition: all 0.5s;
@@ -21,9 +21,9 @@
 
 .footer {
   padding: 3rem;
-  background-color: #4d4d4d;
+  background-color: var(--primary-color);
   text-align: center;
-  color: white;
+  color: var(--secondary-color);
 }
 
 .footer-description {

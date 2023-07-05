@@ -8,6 +8,7 @@ import DropIn from 'braintree-web-drop-in-react'; // For payment
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import './CartPage.css';
+import Loading from './../components/Loading';
 
 const Cart = () => {
   const [cartState, setCartState] = useContext(cartContext);
@@ -19,6 +20,7 @@ const Cart = () => {
   const [instance, setInstance] = useState('');
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [paymentButtonText, setPaymentButtonText] = useState('Make Payment');
 
   const findTotal = () => {
     const total = cartState.reduce((acc, item) => {
@@ -53,6 +55,7 @@ const Cart = () => {
 
   const handlePayment = async () => {
     try {
+      setPaymentButtonText('Payment Processing');
       const { nonce } = await instance.requestPaymentMethod();
 
       // Do the payment
@@ -79,7 +82,11 @@ const Cart = () => {
 
       // Navigate to orders
       navigate('/dashboard/user/orders');
-    } catch (error) {}
+    } catch (error) {
+      toast.error('Payment cannot be done');
+    } finally {
+      setPaymentButtonText('Make Payment');
+    }
   };
 
   useEffect(() => {
@@ -216,21 +223,42 @@ const Cart = () => {
             </table>
           </div>
 
-          <div className="col-12 col-md-6">
-            {!clientToken || !cartState.length || !authState?.token ? (
+          <div className="col-12 col-md-6 col-lg-5 d-flex justify-content-center align-items-center">
+            {authState?.token && cartState.length && !clientToken && (
+              <Loading />
+            )}
+
+            {!authState?.token && (
               <div className="payment-container">
                 <p className="login-to-pay">Login To Pay</p>
                 <button
                   className="btn btn-outline-danger"
                   onClick={() => {
-                    console.log('Clicked');
                     navigate('/login', { state: location.pathname });
                   }}
                 >
                   Login to checkout{location.pathname}
                 </button>
               </div>
-            ) : (
+            )}
+
+            {clientToken && authState?.token && !cartState.length && (
+              <div className="d-flex flex-column justify-content-center align-items-center m-5">
+                <p className="add-items-to-cart-para">
+                  Add items to enable payment
+                </p>
+                <button
+                  onClick={() => {
+                    navigate('/');
+                  }}
+                  className="btn btn-outline-danger"
+                >
+                  Add items
+                </button>
+              </div>
+            )}
+
+            {clientToken && authState?.token && cartState.length && (
               <div className="payment-option">
                 <DropIn
                   options={{
@@ -238,8 +266,11 @@ const Cart = () => {
                   }}
                   onInstance={(instance) => setInstance(instance)}
                 />
-                <button className="btn btn-primary" onClick={handlePayment}>
-                  Make Payment
+                <button
+                  className="btn btn-outline-danger"
+                  onClick={handlePayment}
+                >
+                  {paymentButtonText}
                 </button>
               </div>
             )}

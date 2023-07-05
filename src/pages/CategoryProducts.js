@@ -47,7 +47,7 @@ const CategoryProducts = () => {
               products?.map((product) => {
                 return (
                   <div
-                    className="col-10 col-sm-6 col-md-5 col-lg-4 "
+                    className="col-10 col-sm-6 col-md-5 col-lg-4"
                     key={product._id}
                   >
                     <div

@@ -67,7 +67,7 @@ const OrdersAdmin = () => {
 
   return (
     <div>
-      <h3 className="text-center orders">All Orders</h3>
+      <h3 className="text-center admin-dashboard-sub-heading">All Orders</h3>
       <table className="table">
         <thead>
           <tr>

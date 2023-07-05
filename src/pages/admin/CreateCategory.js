@@ -1,16 +1,17 @@
-import React, { useContext, useEffect, useState } from "react";
-import ReusableCategoryForm from "../../components/utilities/ReusableCategoryForm";
-import authContext from "../../store/auth-context";
-import axios from "axios";
-import { toast } from "react-toastify";
-import { Modal } from "antd";
+import React, { useContext, useEffect, useState } from 'react';
+import ReusableCategoryForm from '../../components/utilities/ReusableCategoryForm';
+import authContext from '../../store/auth-context';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { Modal } from 'antd';
+import Loading from './../../components/Loading';
 
 const CreateCategory = () => {
   // Getting the state from the context to use the token
   const [authState] = useContext(authContext);
 
   // Used for entering new category
-  const [newCategoryName, setNewCategoryname] = useState("");
+  const [newCategoryName, setNewCategoryname] = useState('');
 
   // Holds all the categories
   const [categories, setCategories] = useState([]);
@@ -19,15 +20,18 @@ const CreateCategory = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Holds the new category input
-  const [updatedCategoryName, setUpdatedCategoryName] = useState("");
+  const [updatedCategoryName, setUpdatedCategoryName] = useState('');
 
   // To find out which category is selected
   const [selectedCategory, setSelectedCategory] = useState();
 
+  // To check if the data is loading or not
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleDelete = (categoryId) => {
     // Define the deleting function
     const deleteCategory = async (categoryId) => {
-      console.log("Category Id" + categoryId);
+      console.log('Category Id' + categoryId);
       try {
         const { data } = await axios.delete(
           `/category/delete-category/${categoryId}`,
@@ -45,7 +49,7 @@ const CreateCategory = () => {
           throw new Error();
         }
       } catch (error) {
-        toast.error("Cannot delete the category" + error.message);
+        toast.error('Cannot delete the category' + error.message);
       }
     };
     // Call the deleting function
@@ -61,7 +65,7 @@ const CreateCategory = () => {
       try {
         // Update the category
         const { data } = await axios.put(
-          `/category/update-category/${selectedCategory["_id"]}`,
+          `/category/update-category/${selectedCategory['_id']}`,
           {
             name: updatedCategoryName,
           },
@@ -74,20 +78,20 @@ const CreateCategory = () => {
 
         // If updating  is successfull
         if (data.success) {
-          toast.success("Category updated successfully");
+          toast.success('Category updated successfully');
           // rerender all the categories
           getAllCategories();
           setSelectedCategory(null);
-          setUpdatedCategoryName("");
+          setUpdatedCategoryName('');
           setIsModalOpen(false);
         } else {
-          toast.error("something went wrong");
+          toast.error('something went wrong');
         }
 
         // Clost the moddal
         setIsModalOpen(false);
       } catch (error) {
-        toast.error("Error while updating the category");
+        toast.error('Error while updating the category');
       }
     };
     // Call the updating function
@@ -97,7 +101,9 @@ const CreateCategory = () => {
   // Function to get all categories
   const getAllCategories = async () => {
     try {
-      const response = await axios.get("/category/categories", {
+      setIsLoading(true);
+
+      const response = await axios.get('/category/categories', {
         headers: {
           Authorization: authState.token,
         },
@@ -108,7 +114,9 @@ const CreateCategory = () => {
         setCategories(response.data.data);
       }
     } catch (error) {
-      toast.error("something went wrong" + error.message);
+      toast.error('something went wrong' + error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -127,27 +135,27 @@ const CreateCategory = () => {
       };
 
       const response = await axios.post(
-        "/category/create-category/",
+        '/category/create-category/',
         data,
         headersObject
       );
 
       // Reset the input field
-      setNewCategoryname("");
+      setNewCategoryname('');
       // Again reload all the categories
       getAllCategories();
       // Show a success message
       toast.success(response.data.message);
     } catch (error) {
-      toast.error("Something went wrong while creating a new category");
+      toast.error('Something went wrong while creating a new category');
     }
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (event.target.value === "") {
-      return toast.error("Category name should not be empty");
+    if (event.target.value === '') {
+      return toast.error('Category name should not be empty');
     }
 
     createNewCategory();
@@ -161,14 +169,14 @@ const CreateCategory = () => {
   return (
     <div>
       {/* Heading */}
-      <h1>Manage Categories</h1>
+      <h3 className='admin-dashboard-sub-heading'>Manage Categories</h3>
 
       {/* Form */}
       <ReusableCategoryForm
         handleFormSubmit={handleFormSubmit}
         value={newCategoryName}
         setValue={setNewCategoryname}
-        placeholder={"Enter a category"}
+        placeholder={'Enter a category'}
       />
 
       {/* All Categories */}
@@ -180,33 +188,35 @@ const CreateCategory = () => {
           </tr>
         </thead>
         <tbody>
-          {categories.map((category) => {
-            return (
-              <tr className="m-3" key={category.name}>
-                <td>{category.name}</td>
-                <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => {
-                      setIsModalOpen(true);
-                      setSelectedCategory(category);
-                      setUpdatedCategoryName(category.name);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => {
-                      handleDelete(category._id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
+          {isLoading && <Loading />}
+          {!isLoading &&
+            categories.map((category) => {
+              return (
+                <tr className="m-3" key={category.name}>
+                  <td>{category.name}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => {
+                        setIsModalOpen(true);
+                        setSelectedCategory(category);
+                        setUpdatedCategoryName(category.name);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => {
+                        handleDelete(category._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </table>
 
@@ -220,8 +230,8 @@ const CreateCategory = () => {
           handleFormSubmit={handleModalOk}
           value={updatedCategoryName}
           setValue={setUpdatedCategoryName}
-          placeholder={"Enter New Category Name"}
-          type={"update"}
+          placeholder={'Enter New Category Name'}
+          type={'update'}
         />
       </Modal>
     </div>

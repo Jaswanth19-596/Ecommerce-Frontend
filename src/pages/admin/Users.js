@@ -29,7 +29,7 @@ const Users = () => {
 
   return (
     <div>
-      <h1 className="text-center">All Users</h1>
+      <h1 className="admin-dashboard-sub-heading">All Users</h1>
 
       <table class="table">
         <thead>
@@ -47,11 +47,11 @@ const Users = () => {
           {!isLoading &&
             users?.map((user, id) => (
               <tr>
-                <td>{id + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.phone}</td>
-                <td>{user.address}</td>
+                <td className="t-data">{id + 1}</td>
+                <td className="t-data">{user.name}</td>
+                <td className="t-data">{user.email}</td>
+                <td className="t-data">{user.phone}</td>
+                <td className="t-data">{user.address}</td>
               </tr>
             ))}
         </tbody>

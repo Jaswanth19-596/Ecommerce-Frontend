@@ -80,7 +80,7 @@ const AdminProfile = () => {
 
   return (
     <div>
-      <h3>Update Profile</h3>
+      <h3 className="text-center ">Update Profile</h3>
 
       <form action="" className="form" onSubmit={handleProfileUpdate}>
         <div className="input-group">
@@ -180,7 +180,7 @@ const AdminProfile = () => {
         </div>
 
         <div className="input-group">
-          <button className="btn btn-primary submit-button" type="submit">
+          <button className="button" type="submit">
             Update
           </button>
         </div>

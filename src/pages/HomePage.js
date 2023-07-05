@@ -89,18 +89,12 @@ const HomePage = () => {
     // Copy all the products
     let filteredProducts = [...products];
 
-    console.log('Before filtering categories');
-    console.log(filteredProducts);
-
     // Filter the products based on category - Only if categories are selected
     if (selectedCategories.length > 0) {
       filteredProducts = filteredProducts.filter((product) => {
         return selectedCategories.includes(product.category._id);
       });
     }
-
-    console.log('After filtering categories');
-    console.log(filteredProducts);
 
     // Filter the products based on price - only if the price is selected
     if (selectedPriceRange.length > 0) {
@@ -111,9 +105,6 @@ const HomePage = () => {
         );
       });
     }
-
-    console.log('After filtering price');
-    console.log(filteredProducts);
 
     // Set the new product list
     setTemporaryFilteredProducts(filteredProducts);
@@ -210,7 +201,7 @@ const HomePage = () => {
 
   return (
     <Layout>
-      <div className="container">
+      <div className="container carousel-container">
         <div>
           <Carousel images={imagesForCarousel} />
         </div>
@@ -219,8 +210,8 @@ const HomePage = () => {
       <div className="container-fluid homepage">
         <div className="row homepage-body gy-3">
           {/* Only displays for desktop */}
-          <div className="col-2 col-md-2 col-lg-2 desktop">
-            <h4>Filter By Categories</h4>
+          <div className="col-2 col-md-2 col-lg-2 desktop mt-5">
+            <h4 className="filter-heading">Filter By Categories</h4>
             {categories?.map((category) => {
               return (
                 <div className="checkbox" key={category._id}>
@@ -236,13 +227,13 @@ const HomePage = () => {
               );
             })}
 
-            <h4>Filter By Prices</h4>
+            <h4 className="filter-heading">Filter By Prices</h4>
             <Radio.Group
               onChange={handleRadioChange}
               value={selectedPriceRange.length > 0 ? selectedPriceRange : null}
             >
               {Prices?.map((price) => (
-                <div className="radio" key={price._id}>
+                <div className="radio radio-container" key={price._id}>
                   <Radio value={price.range}>
                     <p className="price-name">{price.name}</p>
                   </Radio>
@@ -250,8 +241,8 @@ const HomePage = () => {
               ))}
             </Radio.Group>
 
-            <div className="reset-button">
-              <button className="btn btn-info" onClick={handleResetFilters}>
+            <div className="reset-button-container">
+              <button className="reset-button" onClick={handleResetFilters}>
                 Reset Filters
               </button>
             </div>
@@ -261,11 +252,11 @@ const HomePage = () => {
           <div className="col-5 mobile">
             <li className="nav-item dropdown">
               <NavLink
-                className="nav-link dropdown-toggle custom-nav-link"
+                className="nav-link dropdown-toggle custom-nav-link category-name"
                 id="navbarDropdownMenuLink"
                 data-bs-toggle="dropdown"
               >
-                Filters
+                <p className="category-name category-name-mobile">Filters</p>
               </NavLink>
               <ul
                 className="dropdown-menu"
@@ -297,7 +288,7 @@ const HomePage = () => {
                 id="navbarDropdownMenuLink"
                 data-bs-toggle="dropdown"
               >
-                Prices
+                <p className="price-name price-name-mobile">Prices</p>
               </NavLink>
               <ul
                 className="dropdown-menu"
@@ -323,10 +314,7 @@ const HomePage = () => {
 
           {/* Only displays for mobile */}
           <div className="col-12 mobile reset-button-container">
-            <button
-              className="btn btn-info reset-button"
-              onClick={handleResetFilters}
-            >
+            <button className="btn reset-button" onClick={handleResetFilters}>
               Reset Filters
             </button>
           </div>
@@ -343,7 +331,7 @@ const HomePage = () => {
                   finalProducts?.map((product) => {
                     return (
                       <div
-                        className="col-12 col-sm-6 col-md-6 col-lg-4 justify-content-center margin-product"
+                        className="col-10 col-sm-6 col-md-6 col-lg-4 justify-content-center margin-product"
                         key={product._id}
                       >
                         <div className="card product" key={product._id}>
@@ -395,7 +383,7 @@ const HomePage = () => {
             {selectedCategories.length === 0 &&
               selectedPriceRange.length === 0 &&
               products.length < totalProducts && (
-                <button className="btn btn-info" onClick={handleLoadMore}>
+                <button className="reset-button" onClick={handleLoadMore}>
                   Load more
                 </button>
               )}

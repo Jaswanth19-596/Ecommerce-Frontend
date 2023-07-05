@@ -6,3 +6,29 @@
 .register-container {
   padding: 5rem;
 }
+
+.register-container h3 {
+  color: var(--secondary-color);
+  font-size: 2rem;
+}
+
+.register-container label {
+  color: var(--gray-color);
+}
+
+.register-container form input,
+.register-container form textarea {
+  border-radius: 1rem !important;
+  padding: 1rem;
+  border-color: #999;
+  border-width: 0.2rem;
+  color: var(--gray-color);
+}
+
+.register-container form input:focus {
+  outline: none;
+}
+
+.register-button {
+  margin: 0;
+}

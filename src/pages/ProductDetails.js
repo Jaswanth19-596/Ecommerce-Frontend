@@ -103,14 +103,14 @@ const ProductDetails = () => {
               </button>
             </div>
           </div>
-          <div className="row  product-detail-container-bottom">
-            <h4 className="col-12  heading-fourth similar-products-heading">
-              Similar Products
-            </h4>
+        </div>
+        <div className="container-fluid similar-products-container">
+          <div className="row similar-products-row">
+            <h3 className="col-12 similar-product-heading">Similar Products</h3>
             {similarProducts?.map((product) => {
               return (
                 <div
-                  className="col-10 col-sm-5 col-md-4 similar-product"
+                  className="col-10 col-sm-5 col-md-4 col-lg-3 similar-product"
                   key={product._id}
                 >
                   <div className="card product" key={product._id}>

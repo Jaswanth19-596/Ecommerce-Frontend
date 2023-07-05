@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -7,6 +7,7 @@ import './LoginPage.css';
 import authContext from '../../store/auth-context';
 import cartContext from '../../store/cart-context';
 import Layout from '../../components/Layout/Layout';
+import { ImWarning } from 'react-icons/im';
 
 axios.defaults.baseURL =
   'https://ecommerce-backend-jaswanth.onrender.com/api/v1';
@@ -44,6 +45,7 @@ const LoginPage = () => {
   // When user logs in -> Update the context to the user details
   const [authState, setAuthState] = useContext(authContext);
   const [, setCartState] = useContext(cartContext);
+  const [loginButtonText, setLoginButtonText] = useState('Login');
 
   // Storing the state
   const [state, dispatch] = useReducer(loginReducer, initialState);
@@ -60,6 +62,8 @@ const LoginPage = () => {
     const data = { email: state.email, password: state.password };
 
     try {
+      setLoginButtonText('Logging in');
+
       const response = await axios.post(`/auth/login`, data);
 
       if (!response.data.success) {
@@ -94,18 +98,20 @@ const LoginPage = () => {
       navigate(location.state ? location.state : '/home');
     } catch (error) {
       toast.error(error.response.data.message);
+    } finally {
+      setLoginButtonText('Login');
     }
   };
 
   return (
     <Layout>
-      <div className="container">
-        <div className="row login-row justify-content-center">
-          <h3 className="heading-tertiary text-center col-12">Login</h3>
+      <div className="container login-container">
+        <div className="row d-flex justify-content-center">
+          <p className="custom-heading col-12">Login</p>
 
           <form
             action=""
-            className="form col-12 col-lg-8"
+            className="form col-12 col-lg-8 login-form"
             onSubmit={submitHandler}
           >
             <div className="input-group">
@@ -125,7 +131,10 @@ const LoginPage = () => {
                 value={state.email}
               />
               {state.isEmailBlurred && !state.email.endsWith('@gmail.com') && (
-                <p className="error-text">Atleast enter a valid email 🙄</p>
+                <p className="error-text">
+                  {<ImWarning className="error-icon" />}Come on !!!!!! Thats not
+                  a valid email{' '}
+                </p>
               )}
             </div>
             <div className="input-group">
@@ -153,8 +162,8 @@ const LoginPage = () => {
             </div>
 
             <div className="input-group">
-              <button className="btn btn-primary submit-button" type="submit">
-                Login
+              <button className="button login-button" type="submit">
+                {loginButtonText}
               </button>
             </div>
           </form>

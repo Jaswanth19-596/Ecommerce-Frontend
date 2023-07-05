@@ -94,7 +94,7 @@ const Register = () => {
             Get Started with a account
           </h3>
           <p className="col-12 para text-center">
-            Create a account with Ecommerce app to do whatever you want
+            Create a account with Ecartify app to do whatever you want
           </p>
           <form
             action=""
@@ -200,7 +200,7 @@ const Register = () => {
 
             <div className="input-group">
               <button
-                className="btn btn-primary submit-button"
+                className="button register-button"
                 disabled={!isFormValid}
                 type="submit"
               >

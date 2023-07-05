@@ -48,7 +48,7 @@ const Products = () => {
 
   return (
     <div>
-      <h1 className="text-center">All Products</h1>
+      <h1 className="admin-dashboard-sub-heading text-center">All Products</h1>
       <div className="container">
         <div className="row mt-5">
           {isLoading && <Loading />}

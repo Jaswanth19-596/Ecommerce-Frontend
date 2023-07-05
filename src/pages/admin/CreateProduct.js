@@ -1,9 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Select } from "antd";
-import axios from "axios";
-import authContext from "../../store/auth-context";
-import { toast } from "react-toastify";
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Select } from 'antd';
+import axios from 'axios';
+import authContext from '../../store/auth-context';
+import { toast } from 'react-toastify';
 
 const { Option } = Select;
 
@@ -13,14 +13,14 @@ const CreateProduct = () => {
 
   const [categories, setCategories] = useState([]);
 
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [price, setPrice] = useState(0);
   // This state is only used for rendering the image
   const [imageForRendering, setImageForRendering] = useState();
   // This state is used for storing the image in the DB
   const [image, setImage] = useState();
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState('');
   const [shipping, setShipping] = useState(0);
   const [description, setDescription] = useState(0);
 
@@ -43,12 +43,12 @@ const CreateProduct = () => {
 
         // Send a request to server to create the product
         const { data } = await axios.post(
-          "/products/create-product",
+          '/products/create-product',
           formData,
           {
             headers: {
               Authorization: authState.token,
-              "Content-Type": "multipart/form-data",
+              'Content-Type': 'multipart/form-data',
             },
           }
         );
@@ -56,12 +56,12 @@ const CreateProduct = () => {
         // if Created succfully
         if (data.success) {
           toast.success(data.message);
-          navigate("/dashboard/admin/products");
+          navigate('/dashboard/admin/products');
         } else {
           toast.error(data.message);
         }
       } catch (error) {
-        toast.error("Something went wrong while creating product");
+        toast.error('Something went wrong while creating product');
       }
     };
 
@@ -93,7 +93,7 @@ const CreateProduct = () => {
   // Function to get all categories
   const getAllCategories = async () => {
     try {
-      const response = await axios.get("/category/categories", {
+      const response = await axios.get('/category/categories', {
         headers: {
           Authorization: authState.token,
         },
@@ -104,7 +104,7 @@ const CreateProduct = () => {
         setCategories(response.data.data);
       }
     } catch (error) {
-      toast.error("something went wrong" + error.message);
+      toast.error('something went wrong' + error.message);
     }
   };
 
@@ -117,14 +117,14 @@ const CreateProduct = () => {
   return (
     <>
       {/* Heading */}
-      <h1>Create Product</h1>
+      <h2 className="admin-dashboard-sub-heading">Create Product</h2>
 
       {/* Form */}
       <form action="" onSubmit={handleSubmit} className="mt-5">
         {/* Form - select -category */}
         <div className="m-1">
           <Select
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             placeholder="Select Category"
             bordered={true}
             onChange={(value) => setCategory(value)}
@@ -141,9 +141,9 @@ const CreateProduct = () => {
         <div className="m-1 mt-3 ">
           <label
             className="btn btn-outline-secondary p-3"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
           >
-            {imageForRendering?.name ? imageForRendering.name : "Upload Image"}
+            {imageForRendering?.name ? imageForRendering.name : 'Upload Image'}
             <input
               type="file"
               accept="image/*"
@@ -171,7 +171,7 @@ const CreateProduct = () => {
           <input
             className="form-control"
             type="text"
-            name={"name"}
+            name={'name'}
             placeholder="Name"
             onChange={(event) => setName(event.target.value)}
             required
@@ -181,7 +181,7 @@ const CreateProduct = () => {
         {/* Form - Description Input */}
         <div className="m-1 mt-3">
           <textarea
-            style={{ resize: "none" }}
+            style={{ resize: 'none' }}
             className="form-control"
             placeholder="Description"
             onChange={(event) => setDescription(event.target.value)}
@@ -217,7 +217,7 @@ const CreateProduct = () => {
         {/* Form - Shipping Input */}
         <div className="m-1 mt-3">
           <Select
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             placeholder="Shipping"
             onChange={(value) => setShipping(value)}
           >
@@ -230,7 +230,7 @@ const CreateProduct = () => {
         <div className="m-1 mt-5">
           <button
             type="submit"
-            style={{ width: "100%" }}
+            style={{ width: '100%' }}
             className="btn btn-primary"
           >
             Submit

@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import searchContext from '../store/search-context';
 import './Layout/Header.css';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const SearchInput = () => {
   const [searchState, setSearchState] = useContext(searchContext);
@@ -21,7 +22,7 @@ const SearchInput = () => {
         onChange={(event) => setInput(event.target.value)}
       />
       <button className="search-button" onClick={handleSearch}>
-        Search
+        <AiOutlineSearch className="search-icon" />
       </button>
     </div>
   );

@@ -38,7 +38,7 @@ const Orders = () => {
 
   return (
     <div>
-      <h3 className="text-center">Your Orders</h3>
+      <h1 className="text-center">Your Orders</h1>
       <table className="table">
         <thead>
           <tr>
