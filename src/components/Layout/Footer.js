@@ -8,8 +8,8 @@ const Footer = () => {
     <div className="container-fluid">
       <div className="row">
         <footer className="footer col-12">
-          <h5>By Jaswanth</h5>
-          <p className="footer-description">Founder & CEO of Nothing</p>
+          <h5>By Jaswanth & Chandra Sekhar Reddy</h5>
+          <p className="footer-description">Founders & CEOs of Nothing</p>
           <div className="footer-links-container">
             <Link to="/about" className="footer-link">
               About
